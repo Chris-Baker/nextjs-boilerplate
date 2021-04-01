@@ -1,34 +1,132 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+<!-- @format -->
 
-## Getting Started
+# NextJS Bootstrap boilerplate
 
-First, run the development server:
+| Maintainers    | Technologies                          |
+| :------------- | :------------------------------------ |
+| [@Chris-Baker] | React (Typescript/NextJS/Bootstrap 4) |
 
-```bash
-npm run dev
-# or
-yarn dev
+## Structure
+
+```
+├── _templates          <-- Hygen code generation templates
+├── public              <-- Static files for NextJS to serve
+└── src
+│   ├── components
+│   ├── helpers
+│   ├── pages
+│   ├── styles          <-- Bootstrap theme and other global styles
+│   └── types           <-- Project global types and interfaces
+└─── typings            <-- Type overrides and declarations
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Local Development
 
-You can start editing the page by modifying `pages/index.js`. The page auto-updates as you edit the file.
+### Requirements
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.js`.
+| Tool    | Version      | Notes                                                                                   |
+| :------ | :----------- | :-------------------------------------------------------------------------------------- |
+| NodeJS  | `lts/erbium` | Easy version management via [nvm]. Version will be auto-selected if using zsh on MacOS.
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
+### Setup
 
-## Learn More
+-   Run `nvm use` in order to switch to the defined project version of NodeJS
+-   Run `npm ci` from the root of the repository.
 
-To learn more about Next.js, take a look at the following resources:
+### Running locally
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+Run the dev server `npm run dev` which will start the NextJS application.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+### Code Style & Linting
 
-## Deploy on Vercel
+[Prettier] handles code style and is run against staged files in a pre-commit hook. This is complimented by [ESLint] that runs in CI, or by running `npm run lint`.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+### Theming Bootstrap
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+The Bootstrap theme is loaded through Emotion as a single CSS file `./src/styles/bootstrap-theme.css`. Don't edit it manually, go to [Bootstrap Magic] and generate a theme.
+
+Copy the generated CSS theme file and the SCSS variables files into `./src/styles/bootstrap-theme.css` and `./src/styles/bootstrap-variables.scss`. You can then reload and edit your theme on Bootstrap Magic using your variables file.
+
+### Code generation via Hygen
+
+#### Getting started
+
+React components and pages can be generated using [hygen].
+
+Running the following command will create a `Modal` component in `./src/components/molecules`
+
+```bash
+$ npx hygen component new --type molecule --name modal
+```
+
+All the required component files are generated including styles.
+
+```bash
+./src/components/molecules/modal
+-- index.tsx
+-- modal.styles.ts
+```
+
+#### Component types
+
+There are four types of component: `atom`, `molecule`, `organism` and `view` which also have the shorthand aliases `a`, `m` `o`, and `v`.
+
+Atom is the default if the `--type` switch is omitted.
+
+Different kinds of components can be generated like so:
+
+**Atoms**
+
+Atoms live in `./src/components/atoms`
+
+```bash
+$ npx hygen component new --type atom --name tab
+$ npx hygen component new --type a --name tab
+```
+
+**Molecules**
+
+Molecules live in `./src/components/molecules`
+
+```bash
+$ npx hygen component new --type molecule --name tab-group
+$ npx hygen component new --type m --name tab-group
+```
+
+**Organisms**
+
+Organisms live in `./src/components/organisms`
+
+```bash
+$ npx hygen component new --type organism --name tabbed-content
+$ npx hygen component new --type o --name tabbed-content
+```
+
+**Views**
+
+Views live in `./src/components/views`
+
+```bash
+$ npx hygen component new --type views --name home
+$ npx hygen component new --type v --name home
+```
+
+#### Pages
+
+Running the following command will create a `Home` page in `./src/pages`
+
+```bash
+$ npx hygen page new --name home
+```
+
+```bash
+./src/components/molecules/modal
+-- home.tsx
+```
+
+[nvm]: https://github.com/creationix/nvm
+[prettier]: https://prettier.io/
+[eslint]: https://eslint.org/
+[hygen]: https://www.hygen.io
+[@chris-baker]: https://github.com/Chris-Baker
+[bootstrap magic]: https://pikock.github.io/bootstrap-magic/app/index.html#!/editor
