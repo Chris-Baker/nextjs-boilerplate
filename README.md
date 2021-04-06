@@ -1,6 +1,6 @@
 <!-- @format -->
 
-# NextJS Bootstrap boilerplate
+# NextJS boilerplate
 
 | Maintainers    | Technologies                          |
 | :------------- | :------------------------------------ |
@@ -120,7 +120,7 @@ $ npx hygen page new --name home
 ```
 
 ```bash
-./src/components/molecules/modal
+./src/pages
 -- home.tsx
 ```
 
