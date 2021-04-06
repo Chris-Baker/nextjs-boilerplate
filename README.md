@@ -39,7 +39,7 @@ Run the dev server `npm run dev` which will start the NextJS application.
 
 ### Code Style & Linting
 
-[Prettier] handles code style and is run against staged files in a pre-commit hook. This is complimented by [ESLint] that runs in CI, or by running `npm run lint`.
+[Prettier] handles code style and is complimented by [ESLint] that runs in CI, or by running `npm run lint`.
 
 ### Theming Bootstrap
 
