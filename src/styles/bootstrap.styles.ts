@@ -2,8 +2,8 @@
 
 // @ts-ignore
 import bootstrapTheme from '!!raw-loader!@app/styles/bootstrap-theme.css';
-import { css, SerializedStyles } from '@emotion/react';
+import { createGlobalStyle } from 'styled-components';
 
-export const bootstrapStyles: SerializedStyles = css`
+export const BootstrapStyles = createGlobalStyle`
     ${bootstrapTheme}
 `;

@@ -4,7 +4,7 @@ to: src/components/<%= h.getComponentDirectory(type) %>/<%= h.changeCase.param(n
 /** @format */
 
 import { FunctionComponent, ReactNode } from 'react';
-import styled from '@emotion/styled';
+import styled from 'styled-components';
 import { isPropValid } from '@app/helpers/is-prop-valid';
 import { ComponentProps } from '@app/types/component-props';
 import { styles } from './<%= h.changeCase.param(name) %>.styles';
