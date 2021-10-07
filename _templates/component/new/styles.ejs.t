@@ -12,7 +12,7 @@ import { <%= h.changeCase.pascal(name) %>Props } from './index';
  * @param props The <%= h.changeCase.noCase(name) %> properties object
  * @return Base styles for the <%= h.changeCase.noCase(name) %> component
  */
-const baseStyles = (props: <%= h.changeCase.pascal(name) %>Props) => css``;
+const baseStyles = (props: Partial<<%= h.changeCase.pascal(name) %>Props>) => css``;
 
 /**
  * The <%= h.changeCase.noCase(name) %> component styles
@@ -20,6 +20,6 @@ const baseStyles = (props: <%= h.changeCase.pascal(name) %>Props) => css``;
  * @param props The <%= h.changeCase.noCase(name) %> properties object
  * @return Styles for the <%= h.changeCase.noCase(name) %> component
  */
-export const styles = (props: <%= h.changeCase.pascal(name) %>Props) => css`
+export const styles = (props: Partial<<%= h.changeCase.pascal(name) %>Props>) => css`
     ${baseStyles(props)}
 `;

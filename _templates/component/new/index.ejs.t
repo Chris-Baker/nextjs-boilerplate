@@ -3,9 +3,8 @@ to: src/components/<%= h.getComponentDirectory(type) %>/<%= h.changeCase.param(n
 ---
 /** @format */
 
-import { FunctionComponent, ReactNode } from 'react';
+import { FunctionComponent } from 'react';
 import styled from 'styled-components';
-import { isPropValid } from '@app/helpers/is-prop-valid';
 import { ComponentProps } from '@app/types/component-props';
 import { styles } from './<%= h.changeCase.param(name) %>.styles';
 
@@ -16,9 +15,7 @@ export interface <%= h.changeCase.pascal(name) %>Props extends ComponentProps {
     children?: ReactNode;
 }
 
-const Styled<%= h.changeCase.pascal(name) %> = styled('div', {
-    shouldForwardProp: (prop) => isPropValid(prop)
-})`
+const Styled<%= h.changeCase.pascal(name) %> = styled('div')`
     ${styles}
 `;
 
