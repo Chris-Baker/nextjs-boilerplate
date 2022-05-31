@@ -2,9 +2,9 @@
 
 # NextJS boilerplate
 
-| Maintainers    | Technologies                          |
-| :------------- | :------------------------------------ |
-| [@Chris-Baker] | React (Typescript/NextJS/Bootstrap 4) |
+| Maintainers    | Technologies                                    |
+| :------------- |:------------------------------------------------|
+| [@Chris-Baker] | React (Typescript / NextJS / Styled Components) |
 
 ## Structure
 
@@ -12,21 +12,29 @@
 ├── _templates          <-- Hygen code generation templates
 ├── public              <-- Static files for NextJS to serve
 └── src
-│   ├── components
-│   ├── helpers
-│   ├── pages
+│   ├── components      <-- React components
+│   │   ├── atoms       <-- Small components
+│   │   ├── molecules   <-- Medium components
+│   │   ├── organisms   <-- Large components
+│   │   ├── views       <-- Page layouts
+│   │   └── icons       <-- Icon components / SVG wrappers
+│   ├── contexts        <-- React contexts
+│   ├── fixtures        <-- static fixture data
+│   ├── helpers         <-- pure functions
+│   ├── hooks           <-- React hooks
+│   ├── pages           <-- App root and page routing components
+│   ├── services        <-- Service and API clients
 │   ├── styles          <-- Bootstrap theme and other global styles
 │   └── types           <-- Project global types and interfaces
-└─── typings            <-- Type overrides and declarations
 ```
 
 ## Local Development
 
 ### Requirements
 
-| Tool    | Version      | Notes                                                                                   |
-| :------ | :----------- | :-------------------------------------------------------------------------------------- |
-| NodeJS  | `lts/erbium` | Easy version management via [nvm]. Version will be auto-selected if using zsh on MacOS.
+| Tool   | Version       | Notes                                                                                   |
+|:-------|:--------------|:----------------------------------------------------------------------------------------|
+| NodeJS | `lts/gallium` | Easy version management via [nvm]. Version will be auto-selected if using zsh on MacOS. |
 
 ### Setup
 
@@ -40,12 +48,6 @@ Run the dev server `npm run dev` which will start the NextJS application.
 ### Code Style & Linting
 
 [Prettier] handles code style and is complimented by [ESLint] that runs in CI, or by running `npm run lint`.
-
-### Theming Bootstrap
-
-The Bootstrap theme is loaded through Emotion as a single CSS file `./src/styles/bootstrap-theme.css`. Don't edit it manually, go to [Bootstrap Magic] and generate a theme.
-
-Copy the generated CSS theme file and the SCSS variables files into `./src/styles/bootstrap-theme.css` and `./src/styles/bootstrap-variables.scss`. You can then reload and edit your theme on Bootstrap Magic using your variables file.
 
 ### Code generation via Hygen
 
@@ -129,4 +131,3 @@ $ npx hygen page new --name home
 [eslint]: https://eslint.org/
 [hygen]: https://www.hygen.io
 [@chris-baker]: https://github.com/Chris-Baker
-[bootstrap magic]: https://pikock.github.io/bootstrap-magic/app/index.html#!/editor
