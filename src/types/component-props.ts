@@ -1,4 +1,5 @@
 /** @format */
+import { ElementType } from 'react';
 
 export interface ComponentProps {
     /**
@@ -10,4 +11,14 @@ export interface ComponentProps {
      * Custom className
      */
     className?: string;
+
+    /**
+     * Custom id
+     */
+    id?: string;
+
+    /**
+     * Override the styled element type
+     */
+    as?: ElementType;
 }

@@ -1,5 +1,8 @@
 /** @format */
 
-import { css, SerializedStyles } from '@emotion/react';
+import { createGlobalStyle } from 'styled-components';
+import { resetStyles } from './reset.styles';
 
-export const globalStyles: SerializedStyles = css``;
+export const GlobalStyles = createGlobalStyle`
+    ${resetStyles}
+`;
