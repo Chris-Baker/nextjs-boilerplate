@@ -90,35 +90,4 @@ export const resetStyles = css`
             scroll-behavior: auto !important;
         }
     }
-    .cookiebtn,
-    #rcc-decline-button {
-        font-size: 2rem;
-        background: rgba(0, 0, 0, 0.6);
-        border-color: white;
-
-        box-shadow: none;
-        color: #b3b3b3;
-        cursor: pointer;
-        flex: 0 0 auto;
-        padding: 5px 10px;
-        margin: 15px;
-    }
-    .cookiecontainer {
-        background: rgba(0, 0, 0, 0.6);
-        align-items: baseline;
-        font-family: 'Baskerville', serif;
-        color: #b3b3b3;
-        display: flex;
-        flex-wrap: wrap;
-        justify-content: space-between;
-        left: 0px;
-        position: fixed;
-        width: 100%;
-        z-index: 999;
-        bottom: 0px;
-    }
-    .cookiecontent {
-        padding: 5px 10px;
-        margin: 15px;
-    }
 `;
