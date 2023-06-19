@@ -1,5 +1,3 @@
-/** @format */
-
 import Head from 'next/head';
 import { Home } from '@app/components/views/home';
 

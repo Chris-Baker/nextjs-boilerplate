@@ -1,5 +1,3 @@
-/** @format */
-
 import { css } from 'styled-components';
 import { HomeProps } from './index';
 

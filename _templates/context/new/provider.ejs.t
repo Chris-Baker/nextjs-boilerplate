@@ -1,8 +1,6 @@
 ---
 to: src/contexts/<%= h.changeCase.param(name) %>-provider.tsx
 ---
-/** @format */
-
 import { createContext, ReactNode, useContext } from 'react';
 
 export interface <%= h.changeCase.pascal(name) %>ContextProviderProps {

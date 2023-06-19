@@ -1,5 +1,3 @@
-/** @format */
-
 function getComponentDirectory(componentType) {
     switch (componentType) {
         case 'molecule':

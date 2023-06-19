@@ -1,5 +1,3 @@
-/** @format */
-
 import { css } from 'styled-components';
 
 export const resetStyles = css`

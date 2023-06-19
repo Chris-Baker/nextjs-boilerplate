@@ -1,5 +1,3 @@
-/** @format */
-
 import { Fragment } from 'react';
 import Head from 'next/head';
 import { GlobalStyles } from '@app/styles/global.styles';
