@@ -2,9 +2,9 @@
 
 # NextJS boilerplate
 
-| Maintainers    | Technologies                                    |
-| :------------- |:------------------------------------------------|
-| [@Chris-Baker] | React (Typescript / NextJS / Styled Components) |
+| Maintainers    | Technologies                                |
+| :------------- |:--------------------------------------------|
+| [@Chris-Baker] | React (Typescript / NextJS / Emotion / MUI) |
 
 ## Structure
 
@@ -22,7 +22,7 @@
 │   ├── fixtures        <-- static fixture data
 │   ├── helpers         <-- pure functions
 │   ├── hooks           <-- React hooks
-│   ├── pages           <-- App root and page routing components
+│   ├── app             <-- App root and page routing components
 │   ├── services        <-- Service and API clients
 │   ├── styles          <-- Bootstrap theme and other global styles
 │   └── types           <-- Project global types and interfaces
@@ -32,9 +32,9 @@
 
 ### Requirements
 
-| Tool   | Version       | Notes                                                                                   |
-|:-------|:--------------|:----------------------------------------------------------------------------------------|
-| NodeJS | `lts/gallium` | Easy version management via [nvm]. Version will be auto-selected if using zsh on MacOS. |
+| Tool   | Version    | Notes                                                                                   |
+|:-------|:-----------|:----------------------------------------------------------------------------------------|
+| NodeJS | `lts/iron` | Easy version management via [nvm]. Version will be auto-selected if using zsh on MacOS. |
 
 ### Setup
 

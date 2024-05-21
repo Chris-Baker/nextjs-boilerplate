@@ -1,5 +1,5 @@
 import { FunctionComponent, ReactNode } from 'react';
-import styled from 'styled-components';
+import styled from '@emotion/styled';
 import { ComponentProps } from '@app/types/component-props';
 import { styles } from './home.styles';
 

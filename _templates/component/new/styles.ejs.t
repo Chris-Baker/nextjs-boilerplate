@@ -1,7 +1,7 @@
 ---
 to: src/components/<%= h.getComponentDirectory(type) %>/<%= h.changeCase.param(name) %>/<%= h.changeCase.param(name) %>.styles.ts
 ---
-import { css } from 'styled-components';
+import { css } from '@emotion/react';
 import { <%= h.changeCase.pascal(name) %>Props } from './index';
 
 export type <%= h.changeCase.pascal(name) %>StyleProps = Partial<<%= h.changeCase.pascal(name) %>Props>;

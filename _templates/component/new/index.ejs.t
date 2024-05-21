@@ -2,7 +2,7 @@
 to: src/components/<%= h.getComponentDirectory(type) %>/<%= h.changeCase.param(name) %>/index.tsx
 ---
 import { FunctionComponent } from 'react';
-import styled from 'styled-components';
+import styled from '@emotion/styled';
 import { ComponentProps } from '@app/types/component-props';
 import { styles } from './<%= h.changeCase.param(name) %>.styles';
 
