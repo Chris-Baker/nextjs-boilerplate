@@ -1,16 +1,7 @@
-/**
- * @format
- * /
-
- /**
- * @type {import('next').NextConfig}
- */
-
+/** @type {import('next').NextConfig} */
 const nextConfig = {
-    reactStrictMode: false,
-    compiler: {
-        styledComponents: true
-    }
+    reactStrictMode: true,
+    sassOptions: { implementation: 'sass-embedded' }
 };
 
 module.exports = nextConfig;

@@ -1,27 +1,22 @@
-import * as React from 'react';
-import { ReactNode } from 'react';
-import { Metadata } from 'next';
-import Head from 'next/head';
-import { StylesRegistry } from '@app/app/styles-registry';
-
-interface RootLayoutProps {
-    children: ReactNode;
-}
+import type { Metadata } from 'next';
+import type { ReactNode } from 'react';
+import '@app/styles/global.scss';
 
 export const metadata: Metadata = {
-    title: 'NextJS Boilerplate',
-    description: 'Boilerplate project for NextJS 14.x'
+    title: 'Next.js Boilerplate',
+    description: 'A Next.js starter with TypeScript, SCSS, BEM and Hygen generators.'
 };
 
-export default function RootLayout({ children }: RootLayoutProps) {
+// Apply a saved preference before paint. System mode is handled entirely by CSS.
+const themeScript = `(function(){try{var mode=localStorage.getItem('theme-mode');if(mode==='light'||mode==='dark'){document.documentElement.dataset.theme=mode}}catch(e){}})()`;
+
+export default function RootLayout({ children }: { children: ReactNode }) {
     return (
-        <html lang="en">
-            <Head>
-                <link rel="icon" href="/favicon.ico" />
-            </Head>
-            <body>
-                <StylesRegistry options={{ key: 'mui' }}>{children}</StylesRegistry>
-            </body>
+        <html lang="en" suppressHydrationWarning>
+            <head>
+                <script dangerouslySetInnerHTML={{ __html: themeScript }} />
+            </head>
+            <body>{children}</body>
         </html>
     );
 }

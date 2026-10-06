@@ -8,14 +8,16 @@ function getComponentDirectory(componentType) {
         case 'o':
             return 'organisms';
 
+        case 'views':
         case 'view':
         case 'v':
             return 'views';
 
         case 'atom':
         case 'a':
-        default:
             return 'atoms';
+        default:
+            throw new Error(`Unknown component type: ${componentType}`);
     }
 }
 

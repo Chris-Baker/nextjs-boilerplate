@@ -1,0 +1,36 @@
+@mixin light-theme {
+    color-scheme: light;
+    --color-background: #fff;
+    --color-surface: #f4f6fa;
+    --color-text: #172033;
+    --color-muted: #516074;
+    --color-accent: #2455d6;
+    --color-border: #d8deea;
+}
+
+@mixin dark-theme {
+    color-scheme: dark;
+    --color-background: #11151c;
+    --color-surface: #1c2330;
+    --color-text: #eef2f8;
+    --color-muted: #b6c1d3;
+    --color-accent: #9bb8ff;
+    --color-border: #374153;
+}
+
+:root {
+    @include light-theme;
+    --font-body: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    --font-mono: ui-monospace, monospace;
+    --radius: 0.5rem;
+}
+
+@media (prefers-color-scheme: dark) {
+    :root:not([data-theme='light']) {
+        @include dark-theme;
+    }
+}
+
+:root[data-theme='dark'] {
+    @include dark-theme;
+}

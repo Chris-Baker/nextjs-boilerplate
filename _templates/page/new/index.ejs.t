@@ -1,8 +1,6 @@
 ---
-to: src/pages/<%= h.changeCase.param(name) %>.tsx
+to: "src/app/<%= h.changeCase.param(name) %>/page.tsx"
 ---
-const <%= h.changeCase.pascal(name) %>Page = () => {
-    return <div><%= h.changeCase.pascal(name) %> Page!</div>;
-};
-
-export default <%= h.changeCase.pascal(name) %>Page;
+export default function <%= h.changeCase.pascal(name) %>Page() {
+    return <main><h1><%= h.changeCase.title(name) %></h1></main>;
+}

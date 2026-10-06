@@ -1,18 +1,17 @@
 ---
-to: src/components/<%= h.getComponentDirectory(type) %>/<%= h.changeCase.param(name) %>/index.tsx
+to: "src/components/<%= h.getComponentDirectory(typeof type === 'undefined' ? 'atom' : type) %>/<%= h.changeCase.param(name) %>/index.tsx"
 ---
-import { FunctionComponent } from 'react';
-import styled from '@emotion/styled';
-import { ComponentProps } from '@app/types/component-props';
-import { styles } from './<%= h.changeCase.param(name) %>.styles';
+<% if (typeof client !== 'undefined' && client) { %>'use client';
+
+<% } %>import type { ComponentProps } from '@app/types/component-props';
+import './<%= h.changeCase.param(name) %>.scss';
 
 export type <%= h.changeCase.pascal(name) %>Props = ComponentProps;
 
-const Styled<%= h.changeCase.pascal(name) %> = styled('div')`
-    ${styles}
-`;
-
-export const <%= h.changeCase.pascal(name) %>: FunctionComponent<<%= h.changeCase.pascal(name) %>Props> = (props: <%= h.changeCase.pascal(name) %>Props) => {
-    const { ...otherProps } = props;
-    return <Styled<%= h.changeCase.pascal(name) %> {...otherProps}></Styled<%= h.changeCase.pascal(name) %>>;
-};
+export function <%= h.changeCase.pascal(name) %>({ className, children, ...props }: <%= h.changeCase.pascal(name) %>Props) {
+    return (
+        <div className={['<%= h.changeCase.param(name) %>', className].filter(Boolean).join(' ')} {...props}>
+            {children}
+        </div>
+    );
+}

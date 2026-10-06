@@ -1,133 +1,109 @@
-<!-- @format -->
+# Next.js boilerplate
 
-# NextJS boilerplate
+A reusable Next.js App Router starter maintained by [Chris Baker](https://github.com/Chris-Baker).
 
-| Maintainers    | Technologies                                |
-| :------------- |:--------------------------------------------|
-| [@Chris-Baker] | React (Typescript / NextJS / Emotion / MUI) |
+## Stack
+
+- Next.js 16 and React 19, with Turbopack for development and production builds and SWC for compilation.
+- TypeScript, checked separately from transpilation.
+- Plain SCSS with BEM naming, compiled to CSS by embedded Dart Sass. No runtime styling library.
+- CSS custom properties for light, dark and system themes.
+- ESLint with Next.js, React and TypeScript rules.
+- Prettier for code, SCSS and documentation.
+- Hygen generators for components, App Router pages and React contexts.
+
+## Getting started
+
+Use Node.js 24 LTS (`nvm use`), then:
+
+```sh
+npm ci
+npm run dev
+```
+
+Open http://localhost:3000. For a production build, run `npm run build`, then `npm start`.
+
+## Checks
+
+```sh
+npm run lint             # ESLint
+npm run format           # Format source, styles and documentation
+npm run format:check     # Check formatting
+npm run typecheck        # Generate route types and check TypeScript
+npm run test:generators  # Generate fixtures in a temporary directory; compile TS and SCSS
+npm run check            # All checks and production build
+```
+
+GitHub Actions runs `npm ci` and `npm run check` on pull requests and pushes to master.
 
 ## Structure
 
-```
-├── _templates          <-- Hygen code generation templates
-├── public              <-- Static files for NextJS to serve
-└── src
-│   ├── components      <-- React components
-│   │   ├── atoms       <-- Small components
-│   │   ├── molecules   <-- Medium components
-│   │   ├── organisms   <-- Large components
-│   │   ├── views       <-- Page layouts
-│   │   └── icons       <-- Icon components / SVG wrappers
-│   ├── contexts        <-- React contexts
-│   ├── fixtures        <-- static fixture data
-│   ├── helpers         <-- pure functions
-│   ├── hooks           <-- React hooks
-│   ├── app             <-- App root and page routing components
-│   ├── services        <-- Service and API clients
-│   ├── styles          <-- Bootstrap theme and other global styles
-│   └── types           <-- Project global types and interfaces
-```
-
-## Local Development
-
-### Requirements
-
-| Tool   | Version    | Notes                                                                                   |
-|:-------|:-----------|:----------------------------------------------------------------------------------------|
-| NodeJS | `lts/iron` | Easy version management via [nvm]. Version will be auto-selected if using zsh on MacOS. |
-
-### Setup
-
--   Run `nvm use` in order to switch to the defined project version of NodeJS
--   Run `npm ci` from the root of the repository.
-
-### Running locally
-
-Run the dev server `npm run dev` which will start the NextJS application.
-
-### Code Style & Linting
-
-[Prettier] handles code style and is complimented by [ESLint] that runs in CI, or by running `npm run lint`.
-
-### Code generation via Hygen
-
-#### Getting started
-
-React components and pages can be generated using [hygen].
-
-Running the following command will create a `Modal` component in `./src/components/molecules`
-
-```bash
-$ npx hygen component new --type molecule --name modal
+```text
+_templates/              Hygen templates
+src/
+  app/                   App Router layouts and pages
+  components/
+    atoms/               Small components
+    molecules/           Component combinations
+    organisms/           Larger sections
+    views/               Page layouts
+    icons/               Icon components
+  contexts/              React context providers
+  hooks/                 React hooks
+  fixtures/              Static fixture data
+  helpers/               Pure functions
+  services/              API clients
+  styles/                Global SCSS and theme tokens
+  types/                 Shared TypeScript types
 ```
 
-All the required component files are generated including styles.
+The `@app/*` alias points to `src/*`.
 
-```bash
-./src/components/molecules/modal
--- index.tsx
--- modal.styles.ts
+## Components and SCSS
+
+```sh
+npx hygen component new --name feature-card --type molecule
+npx hygen component new --name interactive-card --type molecule --client
 ```
 
-#### Component types
+Generates `index.tsx` and `feature-card.scss` together. Components are server-compatible by default; add `--client` for hooks, browser APIs or event handlers. Types are `atom`, `molecule`, `organism` and `view`, with aliases `a`, `m`, `o` and `v`. Omitting `--type` creates an atom.
 
-There are four types of component: `atom`, `molecule`, `organism` and `view` which also have the shorthand aliases `a`, `m` `o`, and `v`.
+Use BEM blocks, elements and modifiers:
 
-Atom is the default if the `--type` switch is omitted.
+```scss
+.feature-card {
+    padding: 1rem;
+    background: var(--color-surface);
 
-Different kinds of components can be generated like so:
+    &__title {
+        color: var(--color-text);
+    }
 
-**Atoms**
-
-Atoms live in `./src/components/atoms`
-
-```bash
-$ npx hygen component new --type atom --name tab
-$ npx hygen component new --type a --name tab
+    &--featured {
+        border: 1px solid var(--color-accent);
+    }
+}
 ```
 
-**Molecules**
+Styles are global CSS, so keep block names unique across the project. Generated components forward native div attributes and merge an additional `className`; change the native element and prop type when a different semantic element is appropriate. The old styled `as` prop is no longer part of the component contract.
 
-Molecules live in `./src/components/molecules`
+## Pages and contexts
 
-```bash
-$ npx hygen component new --type molecule --name tab-group
-$ npx hygen component new --type m --name tab-group
+```sh
+npx hygen page new --name about
+npx hygen context new --name account
 ```
 
-**Organisms**
+Pages are generated at `src/app/about/page.tsx`. Contexts are client components, accept a typed `value`, and throw a clear error if their hook is used outside the provider. Replace the generated context store type with your own data and actions.
 
-Organisms live in `./src/components/organisms`
+## Themes
 
-```bash
-$ npx hygen component new --type organism --name tabbed-content
-$ npx hygen component new --type o --name tabbed-content
-```
+Edit `src/styles/_tokens.scss` for the light/dark palette. `prefers-color-scheme` handles system mode without JavaScript, including live OS preference changes. The appearance buttons store `light`, `dark` or `system` in local storage and synchronise changes across tabs. Each option works with a click, Enter or Space, and exposes its selected state to assistive technology.
 
-**Views**
+A small, static script in the root layout applies a saved override before paint. It only sets a data attribute; there is no runtime CSS generation or theme provider. If your deployment uses a strict Content Security Policy, allow this exact inline script using a hash or integrate your nonce policy. With JavaScript disabled, the system theme still works.
 
-Views live in `./src/components/views`
+## Upgrading an existing project
 
-```bash
-$ npx hygen component new --type views --name home
-$ npx hygen component new --type v --name home
-```
+This update changes the styling approach and developer tooling. Existing Emotion/MUI components need conversion to JSX with BEM classes and SCSS. Move old generated `src/pages` routes to the App Router as appropriate. Replace `next lint` with the new scripts and configure your editor to use ESLint and Prettier.
 
-#### Pages
-
-Running the following command will create a `Home` page in `./src/pages`
-
-```bash
-$ npx hygen page new --name home
-```
-
-```bash
-./src/pages
--- home.tsx
-```
-
-[nvm]: https://github.com/creationix/nvm
-[prettier]: https://prettier.io/
-[eslint]: https://eslint.org/
-[hygen]: https://www.hygen.io
-[@chris-baker]: https://github.com/Chris-Baker
+The portfolio that prompted this update is a separate consumer; this repository remains a general-purpose starter.
