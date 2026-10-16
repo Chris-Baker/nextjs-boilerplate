@@ -1,0 +1,24 @@
+{
+  "schema_version": "1.0",
+  "extensions": {
+    "craft": {
+      "version": "1.0.0",
+      "source": "local",
+      "manifest_hash": "sha256:1da230a0564becf73d25a7043bb366a6c59f014f34cf0b765965e2d6b28d8dd6",
+      "enabled": true,
+      "priority": 10,
+      "registered_commands": {
+        "claude": [
+          "speckit.craft.point-of-view",
+          "speckit.craft.voice",
+          "speckit.craft.tokens",
+          "speckit.craft.experience",
+          "speckit.craft.explore",
+          "speckit.craft.critique"
+        ]
+      },
+      "registered_skills": [],
+      "installed_at": "2026-10-16T12:27:47.499339+00:00"
+    }
+  }
+}

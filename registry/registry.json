@@ -1,0 +1,226 @@
+{
+    "items": [
+        {
+            "name": "button",
+            "type": "atom",
+            "description": "Primary, secondary, ghost and danger actions on Base UI Button, with a focusable pending state that blocks repeat submits.",
+            "use": "Any action. Use one primary per view; a link styled as a button is still an <a>.",
+            "dependencies": ["@base-ui/react"]
+        },
+        {
+            "name": "visually-hidden",
+            "type": "atom",
+            "description": "Text for assistive technology only.",
+            "use": "Icon-only buttons and extra context for repeated links such as 'Edit'."
+        },
+        {
+            "name": "field",
+            "type": "atom",
+            "description": "Label, hint, Input or Textarea and error on Base UI Field; shows native and Form server errors by name.",
+            "use": "Text inputs. Write hints that prevent errors and errors that explain the fix.",
+            "dependencies": ["@base-ui/react"]
+        },
+        {
+            "name": "switch",
+            "type": "atom",
+            "description": "Base UI switch with label and description; submits with native forms.",
+            "use": "Settings that take effect as on/off. Use a checkbox for consent or multi-select lists.",
+            "dependencies": ["@base-ui/react"]
+        },
+        {
+            "name": "checkbox",
+            "type": "atom",
+            "description": "Labelled Base UI checkbox with hint, error and an indeterminate dash; also exports the bare CheckboxControl.",
+            "use": "Consent and independent yes/no choices. Use a switch for settings that apply instantly.",
+            "dependencies": ["@base-ui/react"]
+        },
+        {
+            "name": "checkbox-group",
+            "type": "atom",
+            "description": "Fieldset of checkboxes answering one question, with an optional select-all parent.",
+            "use": "Several choices that can all apply. Read the submission with formData.getAll(name).",
+            "dependencies": ["@base-ui/react"],
+            "registryDependencies": ["checkbox"]
+        },
+        {
+            "name": "radio-group",
+            "type": "atom",
+            "description": "Fieldset of radios with per-option hints and arrow-key navigation.",
+            "use": "One choice from five or fewer visible options. Prefer it to a select so options can be compared.",
+            "dependencies": ["@base-ui/react"]
+        },
+        {
+            "name": "slider",
+            "type": "atom",
+            "description": "Single or range slider with label, formatted value and a full-height hit area.",
+            "use": "Approximate values and ranges such as volume or price. Use a number field when the exact number matters.",
+            "dependencies": ["@base-ui/react"]
+        },
+        {
+            "name": "number-field",
+            "type": "atom",
+            "description": "Number input with steppers, keyboard steps, label scrubbing and Intl formatting.",
+            "use": "Exact quantities, prices and percentages. Not for phone or card numbers.",
+            "dependencies": ["@base-ui/react"]
+        },
+        {
+            "name": "toggle-group",
+            "type": "atom",
+            "description": "Pressed-state buttons for single or multiple selection, with optional hidden form inputs.",
+            "use": "In-place modes and formatting such as alignment or list/grid view. In submitted forms prefer radios or checkboxes.",
+            "dependencies": ["@base-ui/react"]
+        },
+        {
+            "name": "otp-field",
+            "type": "atom",
+            "description": "One-time code slots that paste, autofill (one-time-code) and submit with native forms as one value.",
+            "use": "Verification and two-factor codes. Say where the code was sent; group slots to match how the code is printed.",
+            "dependencies": ["@base-ui/react"]
+        },
+        {
+            "name": "progress",
+            "type": "atom",
+            "description": "Determinate or indeterminate progress bar for a task under way, with label and formatted value.",
+            "use": "Uploads, exports, multi-step jobs. Pass null while progress can't be measured yet; use Meter for static measurements.",
+            "dependencies": ["@base-ui/react"]
+        },
+        {
+            "name": "meter",
+            "type": "atom",
+            "description": "A measurement within a known range, with label, formatted value and caller-chosen tone.",
+            "use": "Storage used, quotas, password strength. Choose the tone where you know whether high is good or bad.",
+            "dependencies": ["@base-ui/react"]
+        },
+        {
+            "name": "avatar",
+            "type": "atom",
+            "description": "Photo with an initials fallback while loading or on error; alt text from the person's name.",
+            "use": "People in lists, comments and headers. Mark decorative when the name is already shown beside it.",
+            "dependencies": ["@base-ui/react"]
+        },
+        {
+            "name": "dialog",
+            "type": "molecule",
+            "description": "Modal on Base UI Dialog: focus trap, scroll lock, outside click, focus return and transitions.",
+            "use": "Short, interrupting decisions. Prefer an inline flow when the user needs the page behind it.",
+            "dependencies": ["@base-ui/react"],
+            "registryDependencies": ["button"]
+        },
+        {
+            "name": "tabs",
+            "type": "molecule",
+            "description": "Base UI tabs with keyboard navigation and a sliding indicator.",
+            "use": "Peer views of the same object. Not for steps in a sequence or primary navigation.",
+            "dependencies": ["@base-ui/react"]
+        },
+        {
+            "name": "disclosure",
+            "type": "molecule",
+            "description": "A single collapsible section on Base UI Collapsible, with animated height and find-in-page.",
+            "use": "Secondary detail. For several related sections use accordion. Don't hide content most users need.",
+            "dependencies": ["@base-ui/react"]
+        },
+        {
+            "name": "callout",
+            "type": "molecule",
+            "description": "Info, success, warning and danger messages with optional live announcement.",
+            "use": "Feedback after an action and important context. Say what happened and what to do next."
+        },
+        {
+            "name": "empty-state",
+            "type": "molecule",
+            "description": "Title, reason and next action for a screen with nothing to show yet.",
+            "use": "First runs, filters with no matches and failed loads; each needs its own words."
+        },
+        {
+            "name": "select",
+            "type": "molecule",
+            "description": "Listbox select on Base UI: typeahead, aligned popup, scroll arrows and native form submission.",
+            "use": "Short lists of fixed choices. Switch to combobox once people would rather type than scroll.",
+            "dependencies": ["@base-ui/react"]
+        },
+        {
+            "name": "combobox",
+            "type": "molecule",
+            "description": "Filterable select on Base UI with clear button, empty message and native form submission.",
+            "use": "Long lists of fixed choices, such as countries or teammates. Not for free-text search.",
+            "dependencies": ["@base-ui/react"]
+        },
+        {
+            "name": "menu",
+            "type": "molecule",
+            "description": "Dropdown menu with items, links, separators, labelled groups, checkbox and radio items, and submenus.",
+            "use": "Secondary actions on an object. Keep the primary action visible; don't hide navigation in it.",
+            "dependencies": ["@base-ui/react"],
+            "registryDependencies": ["button"]
+        },
+        {
+            "name": "context-menu",
+            "type": "molecule",
+            "description": "Right-click and long-press menu for an area, built from the menu item's parts.",
+            "use": "Shortcuts only. Every action must also be reachable from visible controls.",
+            "dependencies": ["@base-ui/react"],
+            "registryDependencies": ["menu"]
+        },
+        {
+            "name": "popover",
+            "type": "molecule",
+            "description": "Non-modal panel anchored to a trigger, with optional title, description, close button and hover opening.",
+            "use": "Details, small forms and infotips. Use a dialog when the user must decide before continuing.",
+            "dependencies": ["@base-ui/react"],
+            "registryDependencies": ["button"]
+        },
+        {
+            "name": "tooltip",
+            "type": "molecule",
+            "description": "Visual label on hover and focus, plus a provider so neighbouring tooltips open instantly.",
+            "use": "Labels for icon-only buttons. Never essential content: it doesn't show on touch.",
+            "dependencies": ["@base-ui/react"]
+        },
+        {
+            "name": "alert-dialog",
+            "type": "molecule",
+            "description": "Confirmation that can't be dismissed by clicking outside, with focus on Cancel, async confirm and in-dialog errors.",
+            "use": "Destructive or irreversible actions. For reversible ones, act immediately and offer undo in a toast.",
+            "dependencies": ["@base-ui/react"],
+            "registryDependencies": ["button"]
+        },
+        {
+            "name": "drawer",
+            "type": "molecule",
+            "description": "Edge panel (right, left or bottom sheet) with swipe-to-dismiss, backdrop and focus management.",
+            "use": "Secondary tasks that keep the page's context, and mobile menus. Use dialog when you don't need gestures.",
+            "dependencies": ["@base-ui/react"],
+            "registryDependencies": ["button"]
+        },
+        {
+            "name": "toast",
+            "type": "molecule",
+            "description": "Stacked, swipeable notifications with tones, an action button and loading/success/error from a promise.",
+            "use": "Confirming background work and offering undo. Not for errors the user must fix in place; use a field error or callout.",
+            "dependencies": ["@base-ui/react"]
+        },
+        {
+            "name": "accordion",
+            "type": "molecule",
+            "description": "Collapsible sections with animated height, single or multiple open, searchable with find-in-page.",
+            "use": "FAQs and grouped secondary detail. Use Disclosure for a single section that must work without JavaScript.",
+            "dependencies": ["@base-ui/react"]
+        },
+        {
+            "name": "scroll-area",
+            "type": "molecule",
+            "description": "Scroll container with a slim themed scrollbar and edge fades that show where content is hidden.",
+            "use": "Bounded lists and panels inside a page. Prefer page scroll; nest scrolling only when it helps.",
+            "dependencies": ["@base-ui/react"]
+        },
+        {
+            "name": "settings-flow",
+            "type": "flow",
+            "description": "A /settings route with a Server Action, Base UI Form errors per field, an error summary, saved and pending states.",
+            "use": "Starting point for any form that saves data. Shows the states a form needs before it's done.",
+            "dependencies": ["@base-ui/react"],
+            "registryDependencies": ["button", "field", "switch", "callout"]
+        }
+    ]
+}

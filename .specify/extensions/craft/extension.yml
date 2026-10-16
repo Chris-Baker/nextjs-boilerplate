@@ -1,0 +1,62 @@
+schema_version: '1.0'
+
+extension:
+    id: craft
+    name: 'Craft'
+    version: '1.0.0'
+    description: 'Point of view, voice, tokens, experience briefs, divergent exploration and editor critique for spec-driven UI work'
+    category: 'process'
+    effect: 'read-write'
+    author: 'Chris Baker'
+    repository: 'https://github.com/Chris-Baker/nextjs-boilerplate'
+    license: 'MIT'
+
+requires:
+    speckit_version: '>=1.2.0'
+
+provides:
+    commands:
+        - name: speckit.craft.point-of-view
+          file: commands/speckit.craft.point-of-view.md
+          description: "Interview the project owner for the product's point of view and write docs/point-of-view.md"
+        - name: speckit.craft.voice
+          file: commands/speckit.craft.voice.md
+          description: "Interview the project owner for the product's voice and write docs/voice.md"
+        - name: speckit.craft.tokens
+          file: commands/speckit.craft.tokens.md
+          description: 'Turn the point of view and brand assets into design tokens'
+        - name: speckit.craft.experience
+          file: commands/speckit.craft.experience.md
+          description: "Interview for the feature's experience and complete the Experience section of its spec"
+        - name: speckit.craft.explore
+          file: commands/speckit.craft.explore.md
+          description: 'Explore divergent directions for a feature before planning, then converge with the owner'
+        - name: speckit.craft.critique
+          file: commands/speckit.craft.critique.md
+          description: 'Review the implemented feature as a user would, against the spec and the quality bar'
+
+hooks:
+    before_constitution:
+        command: speckit.craft.point-of-view
+        optional: true
+        prompt: "Interview for the product's point of view first? The constitution builds on it."
+        description: 'Capture the point of view the constitution depends on'
+    after_specify:
+        command: speckit.craft.experience
+        optional: false
+        description: "Complete the spec's Experience section with the owner"
+    before_plan:
+        command: speckit.craft.explore
+        optional: true
+        prompt: 'Explore divergent directions in /lab before planning?'
+        description: 'Diverge before converging on one direction'
+    after_implement:
+        command: speckit.craft.critique
+        optional: false
+        description: 'Review the running feature as its user would and fix what falls short'
+
+tags:
+    - 'design'
+    - 'ux'
+    - 'quality'
+    - 'interview'

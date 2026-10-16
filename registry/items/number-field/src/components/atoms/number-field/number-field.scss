@@ -1,0 +1,107 @@
+.number-field {
+    &__root {
+        display: grid;
+        gap: var(--space-2);
+    }
+
+    &__scrub-area {
+        justify-self: start;
+        cursor: ew-resize;
+        user-select: none;
+    }
+
+    &__label {
+        font-weight: 600;
+        cursor: inherit;
+    }
+
+    &__hint,
+    &__error {
+        margin: 0;
+        font-size: var(--text-sm);
+    }
+
+    &__hint {
+        color: var(--color-muted);
+    }
+
+    &__error {
+        color: var(--color-danger);
+        font-weight: 500;
+    }
+
+    &__group {
+        display: inline-flex;
+        justify-self: start;
+        border: 1px solid var(--color-control-border);
+        border-radius: var(--radius);
+        background: var(--color-background);
+        transition: border-color var(--duration-fast) var(--ease-out);
+
+        &:focus-within {
+            border-color: var(--color-accent);
+        }
+
+        &[data-disabled] {
+            opacity: 0.6;
+        }
+    }
+
+    &__input {
+        width: 7rem;
+        min-height: 2.75rem;
+        padding: var(--space-2);
+        border: 0;
+        border-inline: 1px solid var(--color-border);
+        color: var(--color-text);
+        background: transparent;
+        font-variant-numeric: tabular-nums;
+        text-align: center;
+
+        &:focus-visible {
+            outline: none;
+        }
+
+        &[data-invalid] {
+            color: var(--color-danger);
+        }
+    }
+
+    &__step {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        width: 2.75rem;
+        border: 0;
+        color: var(--color-text);
+        background: transparent;
+        cursor: pointer;
+        transition: background-color var(--duration-fast) var(--ease-out);
+
+        &:hover:not([data-disabled]) {
+            background: var(--color-surface);
+        }
+
+        &[data-disabled] {
+            color: var(--color-muted);
+            cursor: not-allowed;
+        }
+
+        &:focus-visible {
+            outline-offset: -2px;
+        }
+
+        svg {
+            width: 1rem;
+            height: 1rem;
+            fill: none;
+            stroke: currentColor;
+            stroke-width: 1.75;
+            stroke-linecap: round;
+        }
+    }
+
+    &__root:has([data-invalid]) &__group {
+        border-color: var(--color-danger);
+    }
+}

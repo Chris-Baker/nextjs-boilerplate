@@ -1,0 +1,36 @@
+.avatar {
+    --avatar-size: 2.5rem;
+    display: inline-flex;
+    flex: none;
+    align-items: center;
+    justify-content: center;
+    width: var(--avatar-size);
+    height: var(--avatar-size);
+    overflow: hidden;
+    border-radius: 50%;
+    color: var(--color-text);
+    background: var(--color-surface);
+    box-shadow: inset 0 0 0 1px var(--color-border);
+    vertical-align: middle;
+    user-select: none;
+
+    &--small {
+        --avatar-size: 1.75rem;
+    }
+
+    &--large {
+        --avatar-size: 4rem;
+    }
+
+    &__image {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+
+    &__fallback {
+        font-size: calc(var(--avatar-size) * 0.4);
+        font-weight: 600;
+        line-height: 1;
+    }
+}

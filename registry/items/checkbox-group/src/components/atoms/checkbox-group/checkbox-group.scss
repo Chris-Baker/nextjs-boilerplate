@@ -1,0 +1,54 @@
+// Uses the checkbox atom's .checkbox__box for each control.
+.checkbox-group {
+    &__fieldset {
+        display: grid;
+        margin: 0;
+        padding: 0;
+        border: 0;
+    }
+
+    &__legend {
+        margin-bottom: var(--space-2);
+        padding: 0;
+        font-weight: 600;
+    }
+
+    &__hint {
+        margin: 0 0 var(--space-2);
+        color: var(--color-muted);
+        font-size: var(--text-sm);
+    }
+
+    &__item--parent {
+        margin-bottom: var(--space-1);
+        padding-bottom: var(--space-1);
+        border-bottom: 1px solid var(--color-border);
+    }
+
+    &__label {
+        display: inline-flex;
+        align-items: center;
+        gap: var(--space-3);
+        min-height: 2.75rem;
+        cursor: pointer;
+
+        &[data-disabled] {
+            cursor: not-allowed;
+            opacity: 0.6;
+        }
+    }
+
+    &__option-hint {
+        margin: calc(var(--space-2) * -1) 0 var(--space-1);
+        padding-left: calc(1.25rem + var(--space-3));
+        color: var(--color-muted);
+        font-size: var(--text-sm);
+    }
+
+    &__error {
+        margin: var(--space-2) 0 0;
+        color: var(--color-danger);
+        font-size: var(--text-sm);
+        font-weight: 500;
+    }
+}

@@ -1,0 +1,42 @@
+installed:
+- craft
+settings:
+  auto_execute_hooks: true
+hooks:
+  before_constitution:
+  - extension: craft
+    command: speckit.craft.point-of-view
+    enabled: true
+    optional: true
+    priority: 10
+    prompt: Interview for the product's point of view first? The constitution builds
+      on it.
+    description: Capture the point of view the constitution depends on
+    condition: null
+  after_specify:
+  - extension: craft
+    command: speckit.craft.experience
+    enabled: true
+    optional: false
+    priority: 10
+    prompt: Execute speckit.craft.experience?
+    description: Complete the spec's Experience section with the owner
+    condition: null
+  before_plan:
+  - extension: craft
+    command: speckit.craft.explore
+    enabled: true
+    optional: true
+    priority: 10
+    prompt: Explore divergent directions in /lab before planning?
+    description: Diverge before converging on one direction
+    condition: null
+  after_implement:
+  - extension: craft
+    command: speckit.craft.critique
+    enabled: true
+    optional: false
+    priority: 10
+    prompt: Execute speckit.craft.critique?
+    description: Review the running feature as its user would and fix what falls short
+    condition: null

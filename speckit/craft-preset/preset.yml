@@ -1,0 +1,35 @@
+schema_version: '1.0'
+
+preset:
+    id: craft
+    name: 'Craft'
+    version: '1.0.0'
+    description: 'Adds Experience sections and craft gates to specs, plans and tasks, for use with the craft extension'
+    author: 'Chris Baker'
+    license: 'MIT'
+
+requires:
+    speckit_version: '>=1.2.0'
+
+provides:
+    templates:
+        - type: 'template'
+          name: 'spec-template'
+          file: 'templates/spec-experience.md'
+          description: 'Experience section: moment, unsaid needs, states, words, the detail and ship criteria'
+          strategy: 'append'
+        - type: 'template'
+          name: 'plan-template'
+          file: 'templates/plan-experience.md'
+          description: 'Experience plan and craft gate: direction, registry items, tokens, states and verification'
+          strategy: 'append'
+        - type: 'template'
+          name: 'tasks-template'
+          file: 'templates/tasks-experience.md'
+          description: 'Experience verification phase: walk every state in the running app, then critique'
+          strategy: 'append'
+
+tags:
+    - 'design'
+    - 'ux'
+    - 'quality'

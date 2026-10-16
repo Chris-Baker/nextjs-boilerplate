@@ -42,11 +42,17 @@ try {
     assert.match(read('src/app/example-page/page.tsx'), /export default function ExamplePagePage/);
     generate('context', 'new', '--name', 'example');
     assert.match(read('src/contexts/example-provider.tsx'), /use client/);
+    generate('reducer', 'new', '--name', 'pending-transactions', '--actions', 'add-pending, fail-transaction');
+    const reducer = read('src/contexts/pending-transactions-provider.tsx');
+    assert.match(reducer, /function addPending\(\)/);
+    assert.match(reducer, /failTransaction: \(\) => void;/);
+    assert.match(reducer, /\{ state, addPending, failTransaction \}/);
+    assert.throws(() => generate('reducer', 'new', '--name', 'no-actions'));
     run('node_modules/typescript/bin/tsc', ['--noEmit', '--project', 'tsconfig.json']);
     const scss = readdirSync(join(scratch, 'src'), { recursive: true }).filter((path) => path.endsWith('.scss'));
     for (const path of scss) compile(join(scratch, 'src', path));
     console.log(
-        'Generated server/client components, all directory aliases, App Router page and context compile successfully.'
+        'Generated server/client components, all directory aliases, App Router page, context and reducer context compile successfully.'
     );
 } catch (error) {
     if (error.stdout) console.error(error.stdout.toString());

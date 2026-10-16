@@ -21,8 +21,16 @@ function getComponentDirectory(componentType) {
     }
 }
 
+function getActionNames(actions) {
+    const names = typeof actions === 'string' ? actions.split(',').map((action) => action.trim()) : [];
+    if (names.filter(Boolean).length === 0)
+        throw new Error('Name at least one action, for example: --actions add-item,remove-item');
+    return names.filter(Boolean);
+}
+
 module.exports = {
     helpers: {
-        getComponentDirectory: getComponentDirectory
+        getComponentDirectory: getComponentDirectory,
+        getActionNames: getActionNames
     }
 };

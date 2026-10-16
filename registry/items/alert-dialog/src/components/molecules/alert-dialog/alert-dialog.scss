@@ -1,0 +1,71 @@
+.alert-dialog {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    display: grid;
+    gap: var(--space-3);
+    width: min(28rem, calc(100vw - 2 * var(--space-4)));
+    max-height: calc(100dvh - 2 * var(--space-4));
+    overflow-y: auto;
+    padding: var(--space-6);
+    border: 1px solid var(--color-border);
+    border-radius: calc(var(--radius) * 1.5);
+    color: var(--color-text);
+    background: var(--color-background);
+    box-shadow: var(--shadow-overlay);
+    outline: none;
+    transform: translate(-50%, -50%);
+    transition:
+        transform var(--duration-medium) var(--ease-out),
+        opacity var(--duration-medium) var(--ease-out);
+
+    &[data-starting-style],
+    &[data-ending-style] {
+        opacity: 0;
+        transform: translate(-50%, -50%) scale(0.97);
+    }
+
+    &__backdrop {
+        position: fixed;
+        inset: 0;
+        min-height: 100dvh;
+        background: var(--color-backdrop);
+        transition: opacity var(--duration-medium) var(--ease-out);
+
+        // iOS 26+ Safari: cover the whole visual viewport (body is position: relative).
+        @supports (-webkit-touch-callout: none) {
+            position: absolute;
+        }
+
+        &[data-starting-style],
+        &[data-ending-style] {
+            opacity: 0;
+        }
+    }
+
+    &__title {
+        margin: 0;
+        font-size: var(--text-lg);
+        line-height: 1.3;
+    }
+
+    &__description {
+        margin: 0;
+        color: var(--color-muted);
+        line-height: 1.6;
+    }
+
+    &__error {
+        margin: 0;
+        color: var(--color-danger);
+        font-weight: 500;
+    }
+
+    &__actions {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: flex-end;
+        gap: var(--space-2);
+        margin-top: var(--space-3);
+    }
+}

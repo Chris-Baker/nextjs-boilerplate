@@ -1,5 +1,9 @@
 @use 'tokens';
 
+// Cross-browser baseline: smooths out differences between Chromium, Firefox and Safari defaults so
+// components start from the same place everywhere. Keep it unopinionated; visual decisions belong in
+// tokens and component SCSS.
+
 *,
 *::before,
 *::after {
@@ -8,30 +12,218 @@
 
 html {
     min-height: 100%;
+    -webkit-text-size-adjust: 100%; // Stop iOS enlarging text after rotation.
+    text-size-adjust: 100%;
+    -webkit-tap-highlight-color: transparent; // Components draw their own pressed states.
+    tab-size: 4;
+    hanging-punctuation: first last;
 }
 
 body {
+    position: relative; // Lets popup backdrops cover the visual viewport on iOS Safari.
     margin: 0;
     min-height: 100vh;
+    min-height: 100dvh;
     font-family: var(--font-body);
     font-size: 1rem;
     line-height: 1.5;
     color: var(--color-text);
     background: var(--color-background);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+.app-root {
+    isolation: isolate;
+}
+
+// Typography
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    line-height: 1.2;
+    text-wrap: balance;
+}
+
+p,
+li,
+figcaption {
+    text-wrap: pretty;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p {
+    overflow-wrap: break-word;
+}
+
+b,
+strong {
+    font-weight: bolder;
+}
+
+small {
+    font-size: 80%;
+}
+
+code,
+kbd,
+samp,
+pre {
+    font-family: var(--font-mono);
+    font-size: 1em;
+}
+
+abbr[title] {
+    text-decoration: underline dotted;
+}
+
+sub,
+sup {
+    position: relative;
+    font-size: 75%;
+    line-height: 0;
+    vertical-align: baseline;
+}
+
+sub {
+    bottom: -0.25em;
+}
+
+sup {
+    top: -0.5em;
+}
+
+hr {
+    height: 0;
+    border: 0;
+    border-top: 1px solid var(--color-border);
+    color: inherit;
+}
+
+// Media
+
+img,
+picture,
+video,
+canvas {
+    display: block;
+    max-width: 100%;
 }
 
 img,
 video {
-    max-width: 100%;
     height: auto;
 }
+
+svg {
+    flex-shrink: 0;
+}
+
+// Tables
+
+table {
+    border-collapse: collapse;
+    border-color: inherit;
+    text-indent: 0;
+}
+
+// Forms: inherit type and colour, and remove the margins and appearance quirks browsers disagree on.
 
 button,
 input,
 textarea,
+select,
+optgroup {
+    margin: 0;
+    font: inherit;
+    letter-spacing: inherit;
+    color: inherit;
+}
+
+button,
 select {
+    text-transform: none;
+}
+
+button,
+[type='button'],
+[type='reset'],
+[type='submit'] {
+    -webkit-appearance: button;
+    appearance: button;
+}
+
+::-moz-focus-inner {
+    padding: 0;
+    border-style: none;
+}
+
+:-moz-ui-invalid {
+    box-shadow: none; // Firefox's red glow; fields show their own invalid state.
+}
+
+[type='search'] {
+    -webkit-appearance: textfield;
+    appearance: textfield;
+    outline-offset: -2px;
+}
+
+::-webkit-search-decoration {
+    -webkit-appearance: none;
+}
+
+::-webkit-inner-spin-button,
+::-webkit-outer-spin-button {
+    height: auto;
+}
+
+::-webkit-file-upload-button {
+    -webkit-appearance: button;
     font: inherit;
 }
+
+::placeholder {
+    color: var(--color-muted);
+    opacity: 1; // Firefox lowers placeholder opacity.
+}
+
+textarea {
+    resize: vertical;
+}
+
+fieldset {
+    min-width: 0; // Lets fieldsets shrink in grid and flex layouts.
+    margin: 0;
+    padding: 0;
+    border: 0;
+}
+
+legend {
+    padding: 0;
+}
+
+summary {
+    display: list-item;
+}
+
+progress {
+    vertical-align: baseline;
+}
+
+:disabled {
+    cursor: not-allowed;
+}
+
+// Interaction
 
 a {
     color: var(--color-accent);
@@ -41,6 +233,16 @@ a {
 :focus-visible {
     outline: 2px solid var(--color-accent);
     outline-offset: 4px;
+}
+
+// Leave room above in-page link targets, such as an error summary linking to a field.
+:target {
+    scroll-margin-block: 5ex;
+}
+
+// `hidden` should win over component display rules, except Base UI's find-in-page panels.
+[hidden]:not([hidden='until-found']) {
+    display: none !important;
 }
 
 @media (prefers-reduced-motion: reduce) {

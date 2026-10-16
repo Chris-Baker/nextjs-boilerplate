@@ -1,0 +1,15 @@
+{
+  "schema_version": "1.0",
+  "presets": {
+    "craft": {
+      "version": "1.0.0",
+      "source": "local",
+      "manifest_hash": "sha256:6726eed8a697218f63f1ca2f48becb41fe76b36cc02fbc1022af7fd405d66625",
+      "enabled": true,
+      "priority": 10,
+      "registered_commands": {},
+      "registered_skills": {},
+      "installed_at": "2026-10-16T12:27:54.116834+00:00"
+    }
+  }
+}

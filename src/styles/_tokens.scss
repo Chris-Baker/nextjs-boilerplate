@@ -1,3 +1,8 @@
+// Tokens are where your point of view becomes code. The values below are neutral placeholders:
+// replace them with decisions from docs/point-of-view.md before building real screens.
+// Component SCSS must use these variables; `npm run check:tokens` rejects raw colours elsewhere, and
+// `npm run check:contrast` checks text and control colours against WCAG 2.2 AA in both themes.
+
 @mixin light-theme {
     color-scheme: light;
     --color-background: #fff;
@@ -5,7 +10,14 @@
     --color-text: #172033;
     --color-muted: #516074;
     --color-accent: #2455d6;
+    --color-on-accent: #fff;
     --color-border: #d8deea;
+    --color-control-border: #848fa2; // Form control boundaries need 3:1 against the page.
+    --color-danger: #b42318;
+    --color-success: #18794e;
+    --color-warning: #a15c07;
+    --color-backdrop: rgb(17 21 28 / 45%);
+    --shadow-overlay: 0 1.5rem 3rem -1rem rgb(17 21 28 / 30%);
 }
 
 @mixin dark-theme {
@@ -15,7 +27,14 @@
     --color-text: #eef2f8;
     --color-muted: #b6c1d3;
     --color-accent: #9bb8ff;
+    --color-on-accent: #11151c;
     --color-border: #374153;
+    --color-control-border: #66738a;
+    --color-danger: #ff9b8f;
+    --color-success: #7ddcae;
+    --color-warning: #f5c06b;
+    --color-backdrop: rgb(0 0 0 / 60%);
+    --shadow-overlay: 0 1.5rem 3rem -1rem rgb(0 0 0 / 70%);
 }
 
 :root {
@@ -23,6 +42,22 @@
     --font-body: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
     --font-mono: ui-monospace, monospace;
     --radius: 0.5rem;
+
+    --space-1: 0.25rem;
+    --space-2: 0.5rem;
+    --space-3: 0.75rem;
+    --space-4: 1rem;
+    --space-6: 1.5rem;
+    --space-8: 2rem;
+
+    --text-sm: 0.875rem;
+    --text-md: 1rem;
+    --text-lg: 1.25rem;
+    --text-xl: 1.75rem;
+
+    --duration-fast: 120ms;
+    --duration-medium: 220ms;
+    --ease-out: cubic-bezier(0.2, 0.8, 0.2, 1);
 }
 
 @media (prefers-color-scheme: dark) {

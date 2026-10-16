@@ -34,7 +34,7 @@
             background: var(--color-background);
         }
 
-        &[aria-pressed='true'] {
+        &[data-pressed] {
             color: var(--color-text);
             background: var(--color-background);
             border-color: var(--color-border);

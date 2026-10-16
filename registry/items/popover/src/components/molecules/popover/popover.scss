@@ -1,0 +1,52 @@
+.popover {
+    display: grid;
+    gap: var(--space-2);
+    width: max-content;
+    max-width: min(22rem, var(--available-width));
+    max-height: var(--available-height);
+    overflow-y: auto;
+    padding: var(--space-4);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius);
+    color: var(--color-text);
+    background: var(--color-background);
+    box-shadow: var(--shadow-overlay);
+    outline: 0;
+    transform-origin: var(--transform-origin);
+    transition:
+        opacity var(--duration-fast) var(--ease-out),
+        transform var(--duration-fast) var(--ease-out);
+
+    &[data-starting-style],
+    &[data-ending-style] {
+        opacity: 0;
+        transform: scale(0.97);
+    }
+
+    &[data-instant] {
+        transition: none;
+    }
+
+    &__positioner {
+        outline: 0;
+    }
+
+    &__header {
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-start;
+        gap: var(--space-3);
+    }
+
+    &__title {
+        margin: 0;
+        font-size: var(--text-md);
+        line-height: 1.4;
+    }
+
+    &__description {
+        margin: 0;
+        color: var(--color-muted);
+        font-size: var(--text-sm);
+    }
+}

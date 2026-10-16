@@ -1,0 +1,28 @@
+.tooltip {
+    max-width: min(16rem, var(--available-width));
+    padding: var(--space-1) var(--space-2);
+    border-radius: calc(var(--radius) - 0.125rem);
+    color: var(--color-background);
+    background: var(--color-text);
+    font-size: var(--text-sm);
+    line-height: 1.4;
+    transform-origin: var(--transform-origin);
+    transition:
+        opacity var(--duration-fast) var(--ease-out),
+        transform var(--duration-fast) var(--ease-out);
+
+    &[data-starting-style],
+    &[data-ending-style] {
+        opacity: 0;
+        transform: scale(0.96);
+    }
+
+    // Instant when moving between tooltips in a provider, or when dismissed.
+    &[data-instant] {
+        transition: none;
+    }
+
+    &__positioner {
+        pointer-events: none;
+    }
+}

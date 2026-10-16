@@ -16,7 +16,10 @@ export default function RootLayout({ children }: { children: ReactNode }) {
             <head>
                 <script dangerouslySetInnerHTML={{ __html: themeScript }} />
             </head>
-            <body>{children}</body>
+            <body>
+                {/* Popups portal outside this element, so its stacking context keeps them above the page. */}
+                <div className="app-root">{children}</div>
+            </body>
         </html>
     );
 }

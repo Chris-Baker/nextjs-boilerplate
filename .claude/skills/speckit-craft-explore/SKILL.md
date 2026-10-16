@@ -1,0 +1,1 @@
+../../../.specify/extensions/craft/.specify-dev/agent-commands/claude/speckit-craft-explore/SKILL.md

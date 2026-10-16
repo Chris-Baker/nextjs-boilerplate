@@ -1,6 +1,8 @@
 'use client';
 
-import { useThemeMode } from '@app/hooks/use-theme-mode';
+import { useThemeMode, type ThemeMode } from '@app/hooks/use-theme-mode';
+import { Toggle } from '@base-ui/react/toggle';
+import { ToggleGroup } from '@base-ui/react/toggle-group';
 import { useId } from 'react';
 import './theme-mode-select.scss';
 
@@ -19,19 +21,19 @@ export function ThemeModeSelect() {
             <span className="theme-mode-select__label" id={id}>
                 Appearance
             </span>
-            <div className="theme-mode-select__options" role="group" aria-labelledby={id}>
+            <ToggleGroup
+                className="theme-mode-select__options"
+                aria-labelledby={id}
+                value={[mode]}
+                // One mode is always active, so ignore attempts to unpress the current one.
+                onValueChange={([next]) => next && setMode(next as ThemeMode)}
+            >
                 {modes.map(({ value, label }) => (
-                    <button
-                        className="theme-mode-select__option"
-                        key={value}
-                        type="button"
-                        aria-pressed={mode === value}
-                        onClick={() => setMode(value)}
-                    >
+                    <Toggle className="theme-mode-select__option" key={value} value={value}>
                         {label}
-                    </button>
+                    </Toggle>
                 ))}
-            </div>
+            </ToggleGroup>
         </div>
     );
 }

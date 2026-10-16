@@ -36,3 +36,6 @@ yarn-error.log*
 
 # TypeScript incremental cache
 *.tsbuildinfo
+
+# Personal Claude Code settings
+.claude/settings.local.json
