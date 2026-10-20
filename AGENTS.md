@@ -23,6 +23,11 @@ Write commit messages and PR descriptions as the human author would: what change
 Kit's `git` extension, set `commit_style: conventional` in its config: its default messages start with
 "[Spec Kit]".
 
+## Code comments
+
+Don't write code comments unless the owner asks for one. Train-of-thought comments go stale quickly and make no
+sense out of context. Explain reasoning in the commit message or pull request instead.
+
 ## Why this project works the way it does
 
 AI makes it cheap to build and easy to build something generic: the most probable answer, made to look
